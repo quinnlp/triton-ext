@@ -1,4 +1,4 @@
-# triton-plugins
+# triton-ext
 
 A collection of out-of-tree extensions for the Triton compiler, including passes, dialects, backends, and language extensions.
 
@@ -9,7 +9,7 @@ This repository provides a framework for developing and building Triton compiler
 ## Project Structure
 
 ```
-triton-plugins/
+triton-ext/
 ├── backend/              # Backend extensions directory
 │   └── CMakeLists.txt
 ├── dialect/              # Dialect extensions directory
@@ -62,12 +62,12 @@ This extension repository is designed to be built as part of the Triton build sy
 
 2. **Configure Triton build with extension directory**:
    ```bash
-   cmake -DTRITON_PLUGIN_DIRS=/path/to/triton-plugins ...
+   cmake -DTRITON_EXT_DIRS=/path/to/triton-ext ...
    ```
 
    Or when building via Python setup:
    ```bash
-   TRITON_PLUGIN_DIRS=/path/to/triton-plugins python setup.py develop
+   TRITON_EXT_DIRS=/path/to/triton-ext python setup.py develop
    ```
 
 3. **Build**: The extensions will be built automatically as part of the Triton build process.
@@ -100,7 +100,7 @@ The `LoopSplit` extension in `pass/LoopSplit/` demonstrates how to create a pass
      let description = [{
        Bisect a loop when beneficial.
      }];
-     let constructor = "mlir::triton_plugin::passes::createLoopSplitPass()";
+     let constructor = "mlir::triton_ext::passes::createLoopSplitPass()";
    }
    ```
 
